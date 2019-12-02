@@ -80,3 +80,17 @@ class Business(models.Model):
 
 
 class Post(models.Model):
+    title = models.CharField(max_length=100)
+    story = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+
+
+    def save_post(self):
+        self.save()
+
+    def delete_post(self):
+        self.delete()
+
+    def __str__(self):
+        return f'{self.title} Post'
