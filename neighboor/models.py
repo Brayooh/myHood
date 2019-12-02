@@ -27,3 +27,17 @@ class Neighborhood(models.Model):
     def delete_neighborhood(self):
         self.delete()
 
+class Profile(models.Model):
+    name = models.CharField(max_length=50, null=True)
+    email = models.CharField(max_length=255)
+    user= models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    neighborhood = models.ForeignKey(Neighborhood, null=True, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.png', upload_to='profile/')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+    class Meta:
+        db_table ='Profile'
+
+ 
