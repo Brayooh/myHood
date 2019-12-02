@@ -7,7 +7,7 @@ class TestNeighbourhoodModel(TestCase):
   test class for  the neighbour model
   '''
   def setUp(self):
-    '''
+        '''
     the startup class of the class
     '''
     self.new_user = User(username = 'Liz')
