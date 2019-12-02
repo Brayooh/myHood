@@ -69,3 +69,5 @@ def search_business(request):
         return render(request, 'search.html', context)
 
 
+
+@login_required
