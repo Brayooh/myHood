@@ -50,3 +50,33 @@ class Profile(models.Model):
         instance.profile.save()
 
 
+class Business(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
+
+
+
+    def __str__(self):
+        return f'{self.user} Business'
+
+    class Meta:
+        db_table ='Business'
+
+    def save_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+
+
+    @classmethod
+    def search_by_name(cls,search_term):
+        business = cls.objects.filter(name__icontains=search_term)
+        return business
+
+
+
+
+class Post(models.Model):
