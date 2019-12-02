@@ -13,10 +13,6 @@ def home(request):
     posts = Post.objects.all()
     hoods = Neighborhood.objects.all()
     businesses = Business.objects.all()
-    context = {
-        "posts":posts,
-        "hoods":hoods,
-        "businesses":businesses,
-    }
+ 
     return render(request, 'index.html', context)
 
